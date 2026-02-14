@@ -1,10 +1,10 @@
 const TRACKS = [
-  // Using Wikipedia page titles (underscores OK)
-  { label: "Blinding Lights — The Weeknd", title: "Blinding_Lights" },
-  { label: "As It Was — Harry Styles", title: "As_It_Was" },
-  { label: "Flowers — Miley Cyrus", title: "Flowers_(Miley_Cyrus_song)" },
-  { label: "Espresso — Sabrina Carpenter", title: "Espresso_(song)" },
+  { label: "BTS — Dynamite", title: "Dynamite_(BTS_song)" },
+  { label: "BLACKPINK — How You Like That", title: "How_You_Like_That" },
+  { label: "NewJeans — Super Shy", title: "Super_Shy" },
+  { label: "IVE — Love Dive", title: "Love_Dive" },
 ];
+
 
 const els = {
   trackSelect: document.getElementById("trackSelect"),
@@ -69,25 +69,43 @@ function renderChart(labels, values, seriesLabel) {
         {
           label: seriesLabel,
           data: values,
-          tension: 0.25,
-          pointRadius: 2,
+          tension: 0.3,
+          pointRadius: 0,          // less visual noise
+          borderWidth: 3,
+          borderColor: "rgba(255, 145, 178, 0.95)",     // pastel pink line
+          backgroundColor: "rgba(255, 145, 178, 0.18)", // soft fill
+          fill: true,
         },
       ],
     },
     options: {
       responsive: true,
       plugins: {
-        legend: { display: true },
+        legend: { display: false }, // remove extra text
         tooltip: { mode: "index", intersect: false },
       },
       interaction: { mode: "index", intersect: false },
       scales: {
-        y: { title: { display: true, text: "Daily pageviews" } },
-        x: { title: { display: true, text: "Date" } },
+        y: {
+          grid: { color: "rgba(0,0,0,0.06)" },
+          ticks: {
+            maxTicksLimit: 4,       // fewer y numbers
+            callback: (v) => (v >= 1000 ? `${Math.round(v/1000)}k` : v),
+          },
+          title: { display: false },
+        },
+        x: {
+          grid: { display: false },
+          ticks: {
+            maxTicksLimit: 6,       // fewer x dates
+          },
+          title: { display: false },
+        },
       },
     },
   });
 }
+
 
 async function loadAndPlot() {
   const track = TRACKS[els.trackSelect.value];
