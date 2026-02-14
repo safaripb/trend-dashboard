@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; background: #0b0f19; color: #e8ecf1; }
+.container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+h1 { margin: 0 0 6px; }
+.sub { margin: 0 0 18px; opacity: 0.8; }
+
+.controls {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: end;
+  background: #121a2b;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+label { display: grid; gap: 6px; font-size: 14px; }
+select, button {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #2a3550;
+  background: #0e1526;
+  color: #e8ecf1;
+}
+
+button { cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+
+.status { margin: 14px 0; opacity: 0.9; }
+.chartWrap { background: #121a2b; padding: 14px; border-radius: 12px; }
+.footer { margin-top: 18px; opacity: 0.7; font-size: 13px; }

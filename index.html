@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trend Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Live Trend Dashboard</h1>
+    <p class="sub">Using Wikipedia pageviews as a “trend signal”.</p>
+
+    <section class="controls">
+      <label>
+        Choose a track:
+        <select id="trackSelect"></select>
+      </label>
+
+      <label>
+        Range:
+        <select id="rangeSelect">
+          <option value="30">Last 30 days</option>
+          <option value="60" selected>Last 60 days</option>
+          <option value="90">Last 90 days</option>
+        </select>
+      </label>
+
+      <button id="refreshBtn">Refresh</button>
+    </section>
+
+    <section class="status">
+      <span id="statusText">Ready.</span>
+    </section>
+
+    <section class="chartWrap">
+      <canvas id="trendChart"></canvas>
+    </section>
+
+    <footer class="footer">
+      <span>Data: Wikimedia Pageviews API</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
